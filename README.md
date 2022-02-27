@@ -1,0 +1,2 @@
+# Driver-Circuit-of-MZM
+A CMOS-based optical modulator driver circuit is designed and characterized for plasma-dispersion effect-based Mach-Zehnder Modulator.  The transient response of anode and cathode drivers for the P-N carrier depletion-based phase shifter is simulated on the Synopsys platform.  These design parameters of driver circuits are useful to achieve about 5-7 Gbps data modulation in the optical domain.
