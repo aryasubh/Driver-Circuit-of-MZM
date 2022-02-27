@@ -1,0 +1,81 @@
+*  Generated for: PrimeSim
+*  Design library name: mod_driv_sca
+*  Design cell name: mod_sca_testbench
+*  Design view name: schematic
+.lib 'saed32nm.lib' TT
+
+*Custom Compiler Version S-2021.09
+*Sun Feb 27 14:40:46 2022
+
+.global gnd!
+********************************************************************************
+* Library          : mod_driv_sca
+* Cell             : mod_driv
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt mod_driv vdd vss v_in vout_anode vout_cathode
+xm9 net53 vss net37 vdd p105 w=0.54u l=0.180u nf=1 m=1
+xm8 vout_cathode net80 vdd vdd p105 w=3.5u l=0.180u nf=1 m=1
+xm7 net80 net76 vdd vdd p105 w=3.5u l=0.180u nf=1 m=1
+xm6 net76 net72 vdd vdd p105 w=1.82u l=0.180u nf=1 m=1
+xm5 net72 v_in vdd vdd p105 w=0.774u l=0.180u nf=1 m=1
+xm4 net37 net56 vdd vdd p105 w=0.774u l=0.180u nf=1 m=1
+xm3 net49 net97 vdd vdd p105 w=0.45u l=0.180u nf=1 m=1
+xm2 net61 net97 vdd vdd p105 w=3.5u l=0.180u nf=1 m=1
+xm1 net97 net48 vdd vdd p105 w=2.52u l=0.180u nf=1 m=1
+xm0 net48 v_in vdd vdd p105 w=0.774u l=0.180u nf=1 m=1
+xm19 vout_cathode net80 vss vss n105 w=0.774u l=0.18u nf=1 m=1
+xm18 net80 net76 vss vss n105 w=0.774u l=0.18u nf=1 m=1
+xm17 net76 net72 vss vss n105 w=0.774u l=0.18u nf=1 m=1
+xm16 net72 v_in vss vss n105 w=0.774u l=0.18u nf=1 m=1
+xm15 net61 net37 vout_anode vss n105 w=0.774u l=0.18u nf=1 m=1
+xm14 vout_anode net97 vss vss n105 w=0.774u l=0.18u nf=1 m=1
+xm13 net53 net56 vss vss n105 w=0.774u l=0.18u nf=1 m=1
+xm12 net49 net97 vss vss n105 w=0.774u l=0.18u nf=1 m=1
+xm11 net97 net48 vss vss n105 w=0.774u l=0.18u nf=1 m=1
+xm10 net48 v_in vss vss n105 w=0.774u l=0.18u nf=1 m=1
+.ends mod_driv
+
+********************************************************************************
+* Library          : mod_driv_sca
+* Cell             : mod_sca_testbench
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+xi0 net8 gnd! pulse_in_5ghz vout_anode vout_cathode mod_driv
+v2 net8 gnd! dc=1.8
+v4 pulse_in_5ghz gnd! dc=0 pulse ( 0 1.8 133p 96p 96p 0.5n 1.25n )
+c7 vout_anode gnd! c=35f
+c5 vout_cathode gnd! c=20f
+
+
+
+
+
+
+
+
+.tran '0.01n' '3n' name=tran
+
+.option primesim_remove_probe_prefix = 0
+.probe v(*) i(*) level=1
+.probe tran v(pulse_in_5ghz) v(vout_anode) v(vout_cathode)
+
+.temp 25
+
+
+
+.option primesim_output=wdf
+
+
+.option parhier = LOCAL
+
+
+
+
+
+
+.end
